@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 345276844621673490}
   - component: {fileID: 345276844621673491}
   - component: {fileID: 345276844621673500}
+  - component: {fileID: 4529829218193065460}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -98,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9752d7ab1c78be44bc1118c1309b836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 145
+  moveSpeed: 200
   reticle: {fileID: 0}
   rb: {fileID: 345276844621673500}
 --- !u!50 &345276844621673500
@@ -114,7 +115,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 13
+  m_LinearDrag: 20
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -122,3 +123,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4529829218193065460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345276844621673501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9242a77fafd554bba2b71a8bbfeb28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxStamina: 100
+  maxMana: 100
+  ArmorPercentage: 10

@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
         moveRight = Input.GetAxisRaw("Horizontal");
         moveUp = Input.GetAxisRaw("Vertical");
     }
+
     private void FixedUpdate()
     {
         if (moveRight != 0f || moveUp != 0f)

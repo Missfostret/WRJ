@@ -123,11 +123,32 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &363508892 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 345276844621673501, guid: 58b9cea423a7b0f4693df5f85018c2bb, type: 3}
+  m_PrefabInstance: {fileID: 345276844732881483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &701864078 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 345276844621673489, guid: 58b9cea423a7b0f4693df5f85018c2bb, type: 3}
   m_PrefabInstance: {fileID: 345276844732881483}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &701864082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363508892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9242a77fafd554bba2b71a8bbfeb28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  maxStamina: 100
+  maxMana: 100
+  ArmorPercentage: 10
 --- !u!1 &898959854
 GameObject:
   m_ObjectHideFlags: 0
