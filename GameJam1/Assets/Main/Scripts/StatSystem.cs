@@ -1,4 +1,5 @@
 using UnityEngine;
+using Helpers;
 
 public class StatSystem : MonoBehaviour
 {
@@ -40,13 +41,21 @@ public class StatSystem : MonoBehaviour
         //calculates how much damage to negate depending on armor
         var damageNegation = GetArmourPercent() * incomingDamage;
         var newDamage = incomingDamage - damageNegation;
-        Mathf.Clamp(currentHealth -= newDamage, 0, maxHealth);
+        currentHealth = Mathf.Clamp(currentHealth - newDamage, 0, maxHealth);
+        print("Taking Damage: " + currentHealth);
+        currentHealth = FunctionLibrary.RoundTo1D(currentHealth);
 
         if (currentHealth <= 0)
         {
             //do death stuff here bro
             print("You Died");
         }
+    }
+
+    public void IncreaseHealth(float incomingHeal)
+    {
+        currentHealth = Mathf.Clamp(currentHealth + incomingHeal, 0, maxHealth);
+        print("healing: " + currentHealth);
     }
 
     public void DecreaseMana(float manaCost)
