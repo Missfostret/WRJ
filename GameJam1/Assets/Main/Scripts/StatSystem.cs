@@ -3,20 +3,20 @@ using UnityEngine;
 public class StatSystem : MonoBehaviour
 {
     [SerializeField]
-    int maxHealth = 100;
-    int currentHealth;
+    float maxHealth = 100;
+    float currentHealth;
 
     [SerializeField]
-    int maxStamina = 100;
-    int currentStamina;
+    float maxStamina = 100;
+    float currentStamina;
 
     [SerializeField]
-    int maxMana = 100;
-    int currentMana;
+    float maxMana = 100;
+    float currentMana;
 
     [Tooltip("Armor is a percentage, 10 armor = 10% armor")]
     [SerializeField]
-    int ArmorPercentage = 10;
+    float ArmorPercentage = 10;
 
 
     void Start()
@@ -30,17 +30,18 @@ public class StatSystem : MonoBehaviour
         currentStamina = maxStamina;
         currentMana = maxMana;
     }
-    int GetArmourPercent()
+    public float GetArmourPercent()
     {
-        return (int)(ArmorPercentage / 100);
+        return (ArmorPercentage / 100f);
     }
 
-    void DecreaseHealth(int incomingDamage)
+    public void DecreaseHealth(float incomingDamage)
     {
         //calculates how much damage to negate depending on armor
         var damageNegation = GetArmourPercent() * incomingDamage;
         var newDamage = incomingDamage - damageNegation;
         Mathf.Clamp(currentHealth -= newDamage, 0, maxHealth);
+
         if (currentHealth <= 0)
         {
             //do death stuff here bro
@@ -48,31 +49,31 @@ public class StatSystem : MonoBehaviour
         }
     }
 
-    void DecreaseMana(int manaCost)
+    public void DecreaseMana(float manaCost)
     {
         Mathf.Clamp(currentMana -= manaCost, 0, maxMana);
     }
 
-    void DecreaseStamina(int staminaDrain)
+    public void DecreaseStamina(float staminaDrain)
     {
         Mathf.Clamp(currentStamina -= staminaDrain, 0, maxStamina);
     }
 
     // Setters Getters
 
-    public int GetHealth
+    public float GetHealth
     {
         get { return currentHealth; }
         set { currentHealth = value; }
     }
 
-    public int GetStamina
+    public float GetStamina
     {
         get { return currentStamina; }
         set { currentStamina = value; }
     }
 
-    public int GetMana
+    public float GetMana
     {
         get { return currentMana; }
         set { currentMana = value; }
