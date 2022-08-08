@@ -78,6 +78,11 @@ public class StatSystem : MonoBehaviour
         set { currentHealth = value; }
     }
 
+    public float GetMaxHealth
+    {
+        get { return maxHealth; }
+    }
+
     public float GetStamina
     {
         get { return currentStamina; }

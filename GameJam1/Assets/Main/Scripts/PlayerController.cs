@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     Rigidbody2D rb;
 
+    [SerializeField]
+    CombatScript combatScript;
+
     float moveRight;
     float moveUp;
 
@@ -18,6 +21,16 @@ public class PlayerController : MonoBehaviour
     {
         moveRight = Input.GetAxisRaw("Horizontal");
         moveUp = Input.GetAxisRaw("Vertical");
+
+        if (Input.inputString != "")
+        {
+            var number = 0;
+            var isNumber = int.TryParse(Input.inputString, out number);
+            if (isNumber & number >= 0 && number < 10)
+            {
+                combatScript.SpawnAttack(number);
+            }
+        }
     }
 
     private void FixedUpdate()

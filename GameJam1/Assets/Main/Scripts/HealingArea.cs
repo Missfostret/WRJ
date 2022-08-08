@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 public class HealingArea : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class HealingArea : MonoBehaviour
     float AoETickRate = 1f;
 
     List<StatSystem> statSystems;
-    Enums.EntityState entityState = Enums.EntityState.Player;
+    EntityState entityState = EntityState.Player;
 
     void Start()
     {

@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Enums;
 
 public class DamageArea : MonoBehaviour
 {
     bool hasEntityEntered = false;
     bool isTicking = false;
 
-    float damage = 1f;
+    float damage = 5f;
     float AoETickRate = 1f;
 
     List<StatSystem> statSystems;
-    Enums.EntityState entityState = Enums.EntityState.Player;
+
+    [SerializeField]
+    EntityState entityState = EntityState.Player;
 
     void Start()
     {

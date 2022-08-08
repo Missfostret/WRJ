@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enums : MonoBehaviour
+namespace Enums
 {
     public enum EntityState
     {
