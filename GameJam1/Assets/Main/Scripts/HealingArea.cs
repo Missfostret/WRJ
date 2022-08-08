@@ -5,9 +5,13 @@ using UnityEngine;
 public class HealingArea : MonoBehaviour
 {
     bool hasPlayerEntered = false;
+    bool isTicking = false;
+
     float healing = 1f;
     float AoETickRate = 1f;
+
     List<StatSystem> statSystems;
+    Enums.EntityState entityState = Enums.EntityState.Player;
 
     void Start()
     {
@@ -19,9 +23,18 @@ public class HealingArea : MonoBehaviour
         if (collision)
         {
             var latestHit = collision.gameObject.GetComponent<StatSystem>();
-            statSystems.Add(latestHit);
-            hasPlayerEntered = latestHit != null;
-            StartCoroutine(Heal());
+            var isFriendly = latestHit.GetEntityState == entityState;
+
+            if (isFriendly)
+            {
+                statSystems.Add(latestHit);
+                hasPlayerEntered = latestHit != null;
+            }
+
+            if (statSystems.Count == 1 && !isTicking)
+            {
+                StartCoroutine(Heal());
+            }
         }
     }
 
@@ -36,6 +49,7 @@ public class HealingArea : MonoBehaviour
 
     IEnumerator Heal()
     {
+        isTicking = true;
         while (hasPlayerEntered == true)
         {
             foreach (var statSystem in statSystems)
@@ -44,6 +58,7 @@ public class HealingArea : MonoBehaviour
             }
             yield return new WaitForSeconds(AoETickRate);
         }
+        isTicking = false;
     }
 
     public float Healing

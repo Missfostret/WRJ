@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class DamageArea : MonoBehaviour
 {
-    bool hasPlayerEntered = false;
+    bool hasEntityEntered = false;
+    bool isTicking = false;
+
     float damage = 1f;
     float AoETickRate = 1f;
+
     List<StatSystem> statSystems;
+    Enums.EntityState entityState = Enums.EntityState.Player;
 
     void Start()
     {
@@ -19,9 +23,17 @@ public class DamageArea : MonoBehaviour
         if (collision)
         {
             var latestHit = collision.gameObject.GetComponent<StatSystem>();
-            statSystems.Add(latestHit);
-            hasPlayerEntered = latestHit != null;
-            StartCoroutine(DealDamage());
+            var isFriendly = latestHit.GetEntityState == entityState;
+            if (!isFriendly)
+            {
+                statSystems.Add(latestHit);
+                hasEntityEntered = latestHit != null;
+            }
+
+            if (statSystems.Count == 1 && !isTicking)
+            {
+                StartCoroutine(DealDamage());
+            }
         }
     }
 
@@ -30,13 +42,14 @@ public class DamageArea : MonoBehaviour
         statSystems.Remove(collision.gameObject.GetComponent<StatSystem>());
         if (statSystems.Count <= 0)
         {
-            hasPlayerEntered = false;
+            hasEntityEntered = false;
         }
     }
 
     IEnumerator DealDamage()
     {
-        while (hasPlayerEntered == true)
+        isTicking = true;
+        while (hasEntityEntered == true)
         {
             foreach (var statSystem in statSystems)
             {
@@ -44,5 +57,6 @@ public class DamageArea : MonoBehaviour
             }
             yield return new WaitForSeconds(AoETickRate);
         }
+        isTicking = false;
     }
 }

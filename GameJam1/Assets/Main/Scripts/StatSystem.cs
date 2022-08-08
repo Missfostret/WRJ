@@ -4,21 +4,23 @@ using Helpers;
 public class StatSystem : MonoBehaviour
 {
     [SerializeField]
-    float maxHealth = 100;
+    float maxHealth = 100f;
     float currentHealth;
 
     [SerializeField]
-    float maxStamina = 100;
+    float maxStamina = 100f;
     float currentStamina;
 
     [SerializeField]
-    float maxMana = 100;
+    float maxMana = 100f;
     float currentMana;
 
     [Tooltip("Armor is a percentage, 10 armor = 10% armor")]
     [SerializeField]
-    float ArmorPercentage = 10;
+    float ArmorPercentage = 10f;
 
+    [SerializeField]
+    Enums.EntityState entityState = Enums.EntityState.Player;
 
     void Start()
     {
@@ -86,5 +88,11 @@ public class StatSystem : MonoBehaviour
     {
         get { return currentMana; }
         set { currentMana = value; }
+    }
+
+    public Enums.EntityState GetEntityState
+    {
+        get { return entityState; }
+        private set { entityState = value; }
     }
 }
