@@ -8,4 +8,11 @@ namespace Enums
         Enemy,
         Neutral
     }
+
+    public enum Stat
+    {
+        Health,
+        Mana,
+        Stamina
+    }
 }

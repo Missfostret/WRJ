@@ -89,9 +89,21 @@ public class StatSystem : MonoBehaviour
         set { currentStamina = value; }
     }
 
+    public float GetMaxStamina
+    {
+        get { return maxStamina; }
+        set { maxStamina = value; }
+    }
+
     public float GetMana
     {
         get { return currentMana; }
+        set { currentMana = value; }
+    }
+
+    public float GetMaxMana
+    {
+        get { return maxMana; }
         set { currentMana = value; }
     }
 
